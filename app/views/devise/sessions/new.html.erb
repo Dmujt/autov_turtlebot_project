@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+  <div class="col-md-7 col-sm-12">
+    <div class="grid-content bg-purple pt-4">
+      <el-card shadow="hover">
+
+        <h3 class="blue">
+          Login
+        </h3>
+        <hr>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <% unless devise_error_messages!.blank? %>
+          <el-alert title="" type="error">
+            <%= devise_error_messages! %>
+          </el-alert>
+        <% end %>
+
+        <div class="form-group mt-2 mb-2">
+          <label class="purple">Email</label>
+          <el-input name="user[email]" v-model="email" placeholder="Email" type="email"></el-input>
+        </div>
+
+        <div class="form-group mt-1 mb-2">
+          <label class="purple">Password</label>
+          <el-input name="user[password]" v-model="password" placeholder="Password" type="password"></el-input>
+        </div>
+
+        <div class="input-field pt-3">
+          <el-input name="submit" type="submit" class=""/>
+        </div>
+      <% end %>
+    </el-card>
+
+  </div>
+</div>
+</div>

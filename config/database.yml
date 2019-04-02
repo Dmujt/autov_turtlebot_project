@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: 'localhost'
+  password: <%= ENV['DEFAULT_DB_PASSWORD'] %>
+  username: <%= ENV['DEFAULT_DB_USERNAME'] %>
+
+development:
+  url: <%= ENV['DATABASE_URL'] %>
+
+
+test:
+  <<: *default
+  database: AppNameHere_database
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>

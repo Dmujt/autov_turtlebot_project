@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "/layouts/head" %>
+  </head>
+
+  <body>
+    <div class="container" id="deviseArea">
+      <%= yield %>
+    </div>
+  </body>
+
+  <%= javascript_pack_tag 'application' %>
+  <%= stylesheet_pack_tag 'application' %>
+</html>
