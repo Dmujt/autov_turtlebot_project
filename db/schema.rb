@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_08_04_170657) do
+ActiveRecord::Schema.define(version: 2019_04_18_225124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,29 @@ ActiveRecord::Schema.define(version: 2017_08_04_170657) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "pickup_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "turtlebot_registration_id"
+    t.string "title"
+    t.string "details"
+    t.float "x_coordinate"
+    t.float "y_coordinate"
+    t.integer "rstatus", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["turtlebot_registration_id"], name: "index_pickup_requests_on_turtlebot_registration_id"
+    t.index ["user_id"], name: "index_pickup_requests_on_user_id"
+  end
+
+  create_table "turtlebot_registrations", force: :cascade do |t|
+    t.string "api_key"
+    t.string "name"
+    t.float "x_pos"
+    t.float "y_pos"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

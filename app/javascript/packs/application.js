@@ -25,6 +25,9 @@ Vue.mixin({
       }
     },
     methods: {
+        turtleBotImagePath() {
+            return $('meta[name="turtlebot-image-path"]').attr('content');
+        }
     }
 });
 

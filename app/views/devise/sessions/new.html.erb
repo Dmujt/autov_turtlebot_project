@@ -4,6 +4,7 @@
       <el-card shadow="hover">
 
         <h3 class="blue">
+          <img src="<%= image_url('turtlebot.png') %>" height="50" />
           Login
         </h3>
         <hr>
@@ -24,8 +25,8 @@
           <el-input name="user[password]" v-model="password" placeholder="Password" type="password"></el-input>
         </div>
 
-        <div class="input-field pt-3">
-          <el-input name="submit" type="submit" class=""/>
+        <div class="input-field pt-3 pl-5 pr-5">
+          <input type="submit" name="Login" class="form-control btn btn-success" />
         </div>
       <% end %>
     </el-card>
