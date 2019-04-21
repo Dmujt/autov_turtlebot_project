@@ -31,4 +31,8 @@ class PickupRequest < ApplicationRecord
         self.update_atttribute(:rstatus, :in_progress)
     end
 
+    #select the next request in the queue to send to the TurtleBot
+    def self.next_in_queue
+        PickupRequest.where(:rstatus => :incomplete).first
+    end
 end

@@ -123,6 +123,7 @@ GEM
     pg (0.21.0)
     puma (3.12.1)
     rack (2.0.6)
+    rack-cors (1.0.3)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -245,6 +246,7 @@ DEPENDENCIES
   nokogiri (~> 1.8.0)
   pg (~> 0.18)
   puma (~> 3.0)
+  rack-cors
   rails (>= 5.2.1)
   rails-erd
   railties (>= 5.2.2.1)

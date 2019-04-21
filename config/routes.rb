@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   namespace :api do
-
+    get '/turtlebot_registrations' => 'turtlebot_registrations#index'
+    
+    resources :pickup_requests, only: [:index, :show, :create, :update]
+    scope '/pickup_requests' do
+      get '/last' => 'pickup_requests#last'
+    end
   end
 
   match '/*path', to: 'home#index', via: :get

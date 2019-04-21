@@ -12,14 +12,16 @@ class TurtlebotRegistration < ApplicationRecord
 
     before_create :set_api_key
 
+    enum bstatus: [:stationary, :moving, :in_error]
+
     # set the api key for the TurtleBot
     def set_api_key
         require 'securerandom'
         random_string = SecureRandom.uuid
-        if TurtlebotRegistration.where(:api_key, random_string).count > 0
-            set_api_key
+        if !TurtlebotRegistration.where(:api_key => random_string.to_s).last.nil?
+            self.set_api_key
         else
-            self.update_attribute(:api_key, random_string)
+            self.api_key = random_string.to_s
         end
     end
 
@@ -32,5 +34,15 @@ class TurtlebotRegistration < ApplicationRecord
             :x_pos => xpos.to_f,
             :y_pos => ypos.to_f
         )
+    end
+
+    #status of the bot (moving, completed, etc)
+    def bot_status
+        self.bstatus.to_s
+    end
+
+    #number of requests completed by this turtlebot
+    def requests_completed
+        self.pickup_requests.where(:rstatus => :completed).count
     end
 end

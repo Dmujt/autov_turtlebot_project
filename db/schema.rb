@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_225124) do
+ActiveRecord::Schema.define(version: 2019_04_21_231727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_225124) do
     t.float "y_pos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bstatus", default: 0
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

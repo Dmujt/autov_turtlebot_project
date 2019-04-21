@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'nokogiri', '~> 1.8.0'
 gem 'figaro'
 gem 'bootsnap', require: false
+gem 'rack-cors'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise'
 

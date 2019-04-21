@@ -17,6 +17,13 @@ module TurtleBotProject
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete]
+      end
+    end
+    
     config.to_prepare do
       Devise::Mailer.layout "mailer" # email.haml or email.erb
       Devise::SessionsController.layout "devise"
