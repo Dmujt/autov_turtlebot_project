@@ -32,7 +32,17 @@ class PickupRequest < ApplicationRecord
     end
 
     #select the next request in the queue to send to the TurtleBot
+    #implement scheduling algorithm here!
     def self.next_in_queue
-        PickupRequest.where(:rstatus => :incomplete).first
+        PickupRequest.where(:rstatus => :incomplete).order(:created_at).first
     end
+
+    #returns a json will a list of all completed and queued requests
+    def self.get_all_queues
+        {
+            'req_queue' => PickupRequest.where(:rstatus => [:incomplete, :in_progress]).order(:created_at),
+            'completed_reqs' => PickupRequest.where(:rstatus => [:completed]).order(:created_at)
+        }
+    end
+
 end

@@ -31,11 +31,11 @@ default: &default
 
 development:
   <<: *default
-  compile: false
+  compile: true
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
-    https: true
+    https: false
     host: localhost
     port: 3035
     public: localhost:3035

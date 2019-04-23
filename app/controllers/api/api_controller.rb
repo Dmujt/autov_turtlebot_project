@@ -10,6 +10,14 @@ class Api::ApiController < ActionController::API
     #setup authentication check
     @reg = TurtlebotRegistration.find_by_api_key(request.headers['X-API-KEY']) if request.headers['X-API-KEY']
     if !@reg.nil? || !current_user.nil?
+      #get TB locations and update if available
+      unless @reg.nil?
+        @reg.update_attributes(
+          :x_pos => request.headers['X-BOT-LAT'].to_f,
+          :y_pos => request.headers['X-BOT-LON'].to_f,
+          :bstatus => (request.headers['X-BOT-STATE']).to_sym
+        )
+      end
       return (@reg || current_user)
     else
       head status: :unauthorized

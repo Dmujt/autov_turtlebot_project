@@ -3,6 +3,8 @@ import VueResource from 'vue-resource/dist/vue-resource';
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
 import { mainrouter } from './routes.js';
+import VueGeolocation from 'vue-browser-geolocation';
+Vue.use(VueGeolocation);
 
 Vue.use(ElementUI, { locale });
 Vue.use(VueResource);

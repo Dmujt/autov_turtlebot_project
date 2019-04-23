@@ -4,7 +4,7 @@ class Api::PickupRequestsController < Api::ApiController
   
     #GET /api/pickup_requests
     def index 
-        render json: PickupRequest.all
+        render json: PickupRequest.get_all_queues
     end
 
     # get the last request to be completed by the TurtleBot
@@ -22,7 +22,7 @@ class Api::PickupRequestsController < Api::ApiController
     #POST /api/pickup_requests
     def create 
         pr = PickupRequest.new(pickup_params)
-        pr.current_user = current_user.id
+        pr.user_id = current_user.id
         if pr.save
             render json: pr, status: :ok
         else

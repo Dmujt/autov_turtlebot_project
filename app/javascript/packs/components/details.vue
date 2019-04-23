@@ -1,7 +1,7 @@
 <template>
     <div>
         <h5 class="blue">TurtleBot Status</h5>
-        <p class="m-0 mt-1 mb-3 xsm-text gray p-0"><strong>Note:</strong> The data shown here is updated every five seconds</p>
+        <p class="m-0 mt-1 mb-3 xsm-text gray p-0"><strong>Note:</strong> The data shown here is updated every three seconds</p>
         <div class="row mb-3 mt-1" v-loading="isLoading">
             <div class="col-md-4 col-sm-12 center text-center pl-2 pr-2">
                 <img :src="turtleBotImagePath()" height="200" /><br/>
