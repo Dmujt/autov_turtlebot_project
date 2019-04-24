@@ -36,10 +36,14 @@ class Api::PickupRequestsController < Api::ApiController
     def update
         pr = PickupRequest.find(params[:id])
         pr.turtlebot_registration_id = @reg.id
-        if pr.update_attributes(pickup_params)
+        if pr.rstatus.to_sym == :completed
             render json: pr, status: :ok
         else
-            render json: {message: pr.error}, status: :bad_request
+           if pr.update_attributes(pickup_params)
+                render json: pr, status: :ok
+            else
+                render json: {message: pr.error}, status: :bad_request
+            end
         end
     end
 
