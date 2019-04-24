@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     get '/turtlebot_registrations' => 'turtlebot_registrations#index'
     
-    resources :pickup_requests, only: [:index, :show, :create, :update]
+    resources :pickup_requests, only: [:index, :edit, :create, :update]
     scope '/pickup_requests' do
       get '/last' => 'pickup_requests#last'
       scope '/:id' do

@@ -13,7 +13,7 @@ class Api::PickupRequestsController < Api::ApiController
         render json: PickupRequest.next_in_queue
     end
 
-    #GET /api/pickup_requests/:id
+    #GET /api/pickup_requests/:id/edit
     def show
         render json: PickupRequest.find(params[:id])
     end
