@@ -43,6 +43,30 @@ class Api::PickupRequestsController < Api::ApiController
         end
     end
 
+        #update status of a request
+    # set rstatus, turtlebot coordinates
+    #PUT /api/pickup_requests/:id/completed
+    def complete_state
+        pr = PickupRequest.find(params[:id])
+        if pr.set_completed
+            render json: pr, status: :ok
+        else
+            render json: {message: pr.error}, status: :bad_request
+        end
+    end
+
+        #update status of a request
+    # set rstatus, turtlebot coordinates
+    #PUT /api/pickup_requests/:id/cancel
+    def cancel_state
+        pr = PickupRequest.find(params[:id])
+        if pr.set_cancelled
+            render json: pr, status: :ok
+        else
+            render json: {message: pr.error}, status: :bad_request
+        end
+    end
+    
     private
 
     def pickup_params

@@ -14,7 +14,7 @@ class PickupRequest < ApplicationRecord
     belongs_to :user
     belongs_to :turtlebot_registration
 
-    enum rstatus: [:incomplete, :in_progress, :completed]
+    enum rstatus: [:incomplete, :in_progress, :completed, :cancelled]
 
     #status = complete
     def set_complete
@@ -31,6 +31,10 @@ class PickupRequest < ApplicationRecord
         self.update_atttribute(:rstatus, :in_progress)
     end
 
+    def set_cancelled
+        self.update_attribute(:rstatus, :cancelled)
+    end
+
     #select the next request in the queue to send to the TurtleBot
     #implement scheduling algorithm here!
     def self.next_in_queue
@@ -41,7 +45,7 @@ class PickupRequest < ApplicationRecord
     def self.get_all_queues
         {
             'req_queue' => PickupRequest.where(:rstatus => [:incomplete, :in_progress]).order(:created_at),
-            'completed_reqs' => PickupRequest.where(:rstatus => [:completed]).order(:created_at)
+            'completed_reqs' => PickupRequest.where(:rstatus => [:completed, :cancelled]).order(:created_at)
         }
     end
 

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :pickup_requests, only: [:index, :show, :create, :update]
     scope '/pickup_requests' do
       get '/last' => 'pickup_requests#last'
+      scope '/:id' do
+        put '/cancel' => 'pickup_requests#cancel_state'
+        put '/completed' => 'pickup_requests#complete_state'
+      end
     end
   end
 
