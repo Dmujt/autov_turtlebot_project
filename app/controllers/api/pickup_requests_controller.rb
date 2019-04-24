@@ -9,7 +9,7 @@ class Api::PickupRequestsController < Api::ApiController
 
     # get the last request to be completed by the TurtleBot
     #GET /api/pickup_requests/last
-    def last_req
+    def last
         render json: PickupRequest.next_in_queue
     end
 
