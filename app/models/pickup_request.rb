@@ -17,7 +17,7 @@ class PickupRequest < ApplicationRecord
     enum rstatus: [:incomplete, :in_progress, :completed, :cancelled]
 
     #status = complete
-    def set_complete
+    def set_completed
         self.update_attribute(:rstatus, :completed)
     end
 
