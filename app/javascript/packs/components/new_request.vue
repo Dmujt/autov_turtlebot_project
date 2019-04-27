@@ -11,11 +11,16 @@
         </div>
 
         <div class="form-group">
-            <label class="gray w-100">Pickup Location&nbsp;<br/>
-            <span class="xsm-text">Detected Coordinates:</span>&nbsp;
-            <span class="xsm-text">({{edittingRequest.x_coordinate}}, {{edittingRequest.y_coordinate}})</span>
-            </label>
+            <label class="gray w-100">Set Coordinates</label>
+            <el-input style="width: 100px" placeholder="x-coord" v-model="edittingRequest.x_coordinate"></el-input>
+            <el-input  style="width: 100px" placeholder="y-coord" v-model="edittingRequest.y_coordinate"></el-input>
+        </div>
+        <div class="form-group">
+            <label class="gray xsm-text w-100">Coordinates</label>
+                <span class="xsm-text">({{edittingRequest.x_coordinate}}, {{edittingRequest.y_coordinate}})</span>
+            <!--
             <el-button type="danger" size="small" @click="getLocation()" round> <i class="fas fa-street-view"></i> Set Location</el-button>
+            -->
         </div>
 
         <div class="form-group w-100 border-top pt-3">
