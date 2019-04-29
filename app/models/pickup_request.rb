@@ -28,7 +28,7 @@ class PickupRequest < ApplicationRecord
 
     #status = in_progress
     def set_in_progress
-        self.update_atttribute(:rstatus, :in_progress)
+        self.update_attribute(:rstatus, :in_progress)
     end
 
     def set_cancelled
